@@ -7,8 +7,43 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const moreItems = [
-    { icon: MessageCircle, label: 'Guestbook', desc: 'Let me know you were here', href: '#guestbook' },
-    { icon: List, label: 'Bucket List', desc: 'Things to do at least once in my life', href: '#bucket-list' },
+    { 
+      icon: MessageCircle, 
+      label: 'Guestbook', 
+      desc: 'Let me know you were here', 
+      href: '#guestbook',
+      hasImage: true,
+      imageUrl: '/guestbook-bg.jpg'
+    },
+    { 
+      icon: List, 
+      label: 'Bucket List', 
+      desc: 'Things to do at least once in my life', 
+      href: '#bucket-list',
+      hasImage: true,
+      imageUrl: '/bucketlist-bg.jpg'
+    },
+    { 
+      icon: LinkIcon, 
+      label: 'Links', 
+      desc: 'All my links are here', 
+      href: '#links',
+      hasImage: false
+    },
+    { 
+      icon: Laptop, 
+      label: 'Uses', 
+      desc: 'A peek into my digital...', 
+      href: '#uses',
+      hasImage: false
+    },
+    { 
+      icon: Award, 
+      label: 'Attribution', 
+      desc: 'Journey to create this site', 
+      href: '#attribution',
+      hasImage: false
+    },
   ];
 
   const menuPages = [
@@ -40,12 +75,19 @@ const Navigation = () => {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - LEFT BUTTON */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-surface-lighter transition-all duration-300 group"
+            className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-surface-lighter transition-all duration-300 group overflow-hidden"
           >
-            <div className="text-lg font-bold text-white group-hover:scale-110 transition-transform">
+            {/* Your logo image will go here */}
+            <img 
+              src="/logo.png" 
+              alt="Shelvin Akamuran" 
+              className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform"
+            />
+            {/* Fallback if image doesn't load */}
+            <div className="hidden text-lg font-bold text-white group-hover:scale-110 transition-transform">
               SA
             </div>
           </button>
@@ -58,7 +100,11 @@ const Navigation = () => {
             <a href="#blog" className="nav-pill">Blog</a>
             
             {/* More Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsMoreOpen(true)}
+              onMouseLeave={() => setIsMoreOpen(false)}
+            >
               <button
                 onClick={() => setIsMoreOpen(!isMoreOpen)}
                 className="nav-pill flex items-center gap-1"
@@ -67,30 +113,71 @@ const Navigation = () => {
                 <ChevronDown size={16} className={`transition-transform duration-300 ${isMoreOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Menu */}
+              {/* Dropdown Menu - SIDE BY SIDE LAYOUT */}
               {isMoreOpen && (
                 <>
                   <div 
                     className="fixed inset-0 z-40"
                     onClick={() => setIsMoreOpen(false)}
                   />
-                  <div className="absolute top-full mt-2 right-0 glass rounded-2xl p-2 min-w-[280px] dropdown-enter z-50">
-                    {moreItems.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-lighter transition-all duration-300 group"
-                        onClick={() => setIsMoreOpen(false)}
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-surface-dark flex items-center justify-center flex-shrink-0 group-hover:bg-surface group-hover:scale-110 transition-all">
-                          <item.icon size={20} className="text-text-secondary group-hover:text-primary" />
-                        </div>
-                        <div>
-                          <div className="font-medium text-white mb-0.5">{item.label}</div>
-                          <div className="text-xs text-text-secondary">{item.desc}</div>
-                        </div>
-                      </a>
-                    ))}
+                  <div className="absolute top-full mt-2 right-0 glass rounded-2xl p-3 min-w-[600px] dropdown-enter z-50">
+                    <div className="flex gap-3">
+                      {/* LEFT SIDE - Image Cards */}
+                      <div className="flex-1 grid grid-cols-1 gap-2">
+                        {moreItems.filter(item => item.hasImage).map((item) => (
+                          <a
+                            key={item.label}
+                            href={item.href}
+                            className="relative h-32 rounded-xl overflow-hidden group cursor-pointer"
+                            onClick={() => setIsMoreOpen(false)}
+                          >
+                            {/* Background Image */}
+                            <div 
+                              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                              style={{ 
+                                backgroundImage: `url(${item.imageUrl})`,
+                                backgroundColor: '#1a1a24'
+                              }}
+                            >
+                              {/* Fallback gradient if no image */}
+                              <div className="w-full h-full bg-gradient-to-br from-surface/90 to-surface-dark/90"></div>
+                            </div>
+                            
+                            {/* Gradient Overlay for text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                              <div className="font-semibold text-white text-sm mb-0.5">{item.label}</div>
+                              <div className="text-xs text-gray-300">{item.desc}</div>
+                            </div>
+                            
+                            {/* Hover Effect */}
+                            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* RIGHT SIDE - Regular Items */}
+                      <div className="flex-1 space-y-1">
+                        {moreItems.filter(item => !item.hasImage).map((item) => (
+                          <a
+                            key={item.label}
+                            href={item.href}
+                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-lighter transition-all duration-300 group"
+                            onClick={() => setIsMoreOpen(false)}
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-surface-dark flex items-center justify-center flex-shrink-0 group-hover:bg-surface group-hover:scale-110 transition-all">
+                              <item.icon size={18} className="text-text-secondary group-hover:text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-medium text-white text-sm mb-0.5">{item.label}</div>
+                              <div className="text-xs text-text-secondary">{item.desc}</div>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
@@ -104,7 +191,7 @@ const Navigation = () => {
             </button>
           </div>
 
-          {/* Command Icon */}
+          {/* Command Icon - RIGHT BUTTON */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-surface-lighter transition-all duration-300 group"
@@ -183,10 +270,10 @@ const Navigation = () => {
         </div>
       )}
 
-      {/* Full Menu Panel */}
+      {/* Full Menu Panel - CENTERED WITH FULL BLUR */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] modal-overlay" onClick={() => setIsMenuOpen(false)}>
-          <div className="h-full max-w-md w-full glass menu-enter p-6 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay" onClick={() => setIsMenuOpen(false)}>
+          <div className="w-full max-w-md glass menu-enter rounded-3xl p-6 max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Search Bar */}
             <div className="glass-light rounded-2xl px-4 py-3 mb-6 flex items-center gap-3">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-tertiary">
@@ -235,6 +322,7 @@ const Navigation = () => {
                     target={item.href.startsWith('http') ? '_blank' : undefined}
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                     <span className="text-text-secondary group-hover:text-white transition-colors flex-1">{item.label}</span>
@@ -259,6 +347,7 @@ const Navigation = () => {
                     key={item.label}
                     href={item.href}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                     <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
