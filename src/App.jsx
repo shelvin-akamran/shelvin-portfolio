@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import { Outlet } from "react-router-dom"
+import Navigation from "./pages/navigation.jsx"
 
-function App() {
-
+const MainLayout = () => {
   return (
     <>
-    
+      <Navigation />
+      <Outlet />
     </>
   )
 }
 
-export default App
+export default MainLayout
