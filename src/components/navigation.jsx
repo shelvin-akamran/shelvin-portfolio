@@ -82,9 +82,9 @@ const Navigation = () => {
           >
             {/* Your logo image will go here */}
             <img 
-              src="/logo.png" 
+              src="public/Badge Collection Vol_ 1 - Daniel Lasso.jpg" 
               alt="Shelvin Akamuran" 
-              className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform"
+              className="w-20 h-20 rounded-lg overflow-hidden"
             />
             {/* Fallback if image doesn't load */}
             <div className="hidden text-lg font-bold text-white group-hover:scale-110 transition-transform">
