@@ -1,10 +1,17 @@
 import { useState } from 'react';
-import { ChevronDown, X, Calendar, Mail, MessageSquare, Home, User, Briefcase, BookOpen, MessageCircle, List, Phone, Laptop, Award, Link as LinkIcon, Github, Linkedin, Twitter, FileText, Shield, Scale } from 'lucide-react';
+import { ChevronDown, X, Calendar, Mail, MessageSquare, Home, User, Briefcase, BookOpen, MessageCircle, List, Phone, Laptop, Award, Link as LinkIcon, Github, Linkedin, Twitter, FileText, Shield, Scale, Copy, Check } from 'lucide-react';
 
 const Navigation = () => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isBookCallOpen, setIsBookCallOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('akamranshelvin@gmail.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const moreItems = [
     { 
@@ -73,7 +80,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo - LEFT BUTTON */}
           <button
@@ -82,9 +89,9 @@ const Navigation = () => {
           >
             {/* Your logo image will go here */}
             <img 
-              src="public/Badge Collection Vol_ 1 - Daniel Lasso.jpg" 
+              src="/logo.svg" 
               alt="Shelvin Akamuran" 
-              className="w-20 h-20 rounded-lg overflow-hidden"
+              className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform"
             />
             {/* Fallback if image doesn't load */}
             <div className="hidden text-lg font-bold text-white group-hover:scale-110 transition-transform">
@@ -93,11 +100,11 @@ const Navigation = () => {
           </button>
 
           {/* Center Navigation */}
-          <div className="glass rounded-full px-2 py-2 flex items-center gap-1">
-            <a href="#home" className="nav-pill active">Home</a>
-            <a href="#about" className="nav-pill">About</a>
-            <a href="#work" className="nav-pill">Work</a>
-            <a href="#blog" className="nav-pill">Blog</a>
+          <div className="glass rounded-full px-2 py-1.5 flex items-center gap-1">
+            <a href="#home" className="nav-pill active text-sm">Home</a>
+            <a href="#about" className="nav-pill text-sm">About</a>
+            <a href="#work" className="nav-pill text-sm">Work</a>
+            <a href="#blog" className="nav-pill text-sm">Blog</a>
             
             {/* More Dropdown */}
             <div 
@@ -185,7 +192,7 @@ const Navigation = () => {
 
             <button
               onClick={() => setIsBookCallOpen(true)}
-              className="px-5 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-primary-hover transition-all duration-300 hover:scale-105 ml-1"
+              className="px-4 py-2 bg-primary text-white rounded-full font-medium text-sm hover:bg-primary-hover transition-all duration-300 hover:scale-105 ml-1"
             >
               Book a Call
             </button>
@@ -232,16 +239,28 @@ const Navigation = () => {
                 <p className="text-sm text-text-secondary">Schedule a 30-min chat</p>
               </a>
 
-              <a
-                href="mailto:akamranshelvin@gmail.com"
-                className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group"
+              <button
+                onClick={copyEmail}
+                className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-full bg-surface-dark flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Mail size={24} className="text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-1">Email Me</h3>
-                <p className="text-sm text-text-secondary">akamranshelvin@gmail.com</p>
-              </a>
+                <p className="text-sm text-text-secondary flex items-center gap-2">
+                  {emailCopied ? (
+                    <>
+                      <Check size={16} className="text-green-400" />
+                      <span className="text-green-400">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>akamranshelvin@gmail.com</span>
+                      <Copy size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </>
+                  )}
+                </p>
+              </button>
             </div>
 
             <button className="w-full glass-light rounded-2xl p-4 hover:bg-surface transition-all duration-300 flex items-center gap-3 mb-6">
