@@ -3,7 +3,9 @@ import { Calendar, MapPin, Briefcase, Award, Code, Sparkles } from 'lucide-react
 
 const WorkExperience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const timelineRef = useRef(null);
+  const containerRef = useRef(null);
 
   const experiences = [
     {
@@ -49,35 +51,12 @@ const WorkExperience = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!timelineRef.current) return;
-
-      const elements = timelineRef.current.querySelectorAll('.timeline-item');
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      elements.forEach((element, index) => {
-        const elementPosition = element.offsetTop;
-        const elementBottom = elementPosition + element.offsetHeight;
-        
-        if (scrollPosition >= elementPosition) {
-          setActiveIndex(index);
-        }
-        
-        // Check if we've scrolled past the first card
-        if (index === 0 && scrollPosition > elementBottom + 100) {
-          setActiveIndex(1); // Activate second card
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Cards are static - no scroll animation
+    setScrollProgress(0);
   }, []);
 
   return (
-    <section className="py-20 px-6 max-w-[1100px] mx-auto relative" ref={timelineRef}>
+    <section className="py-20 px-6 max-w-[1100px] mx-auto relative" ref={containerRef}>
       {/* Section Header */}
       <div className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-4">
@@ -93,23 +72,20 @@ const WorkExperience = () => {
       </div>
 
       {/* Timeline */}
-      <div className="relative">
+      <div className="relative overflow-hidden">
         {/* Vertical Line (Center) */}
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-400/20 via-purple-400/20 to-primary/20 transform md:-translate-x-1/2"></div>
 
-        {/* Animated Progress Line */}
+        {/* Animated Progress Line - Always visible between cards */}
         <div 
-          className="absolute left-8 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-pink-400 via-purple-400 to-primary transform md:-translate-x-1/2 transition-all duration-500"
-          style={{ 
-            height: `${(activeIndex + 1) * (100 / experiences.length)}%`,
-          }}
+          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-400 via-purple-400 to-primary md:-translate-x-1/2"
         ></div>
 
         {/* Timeline Items */}
         {experiences.map((exp, index) => (
           <div 
             key={exp.id}
-            className={`timeline-item relative mb-32 last:mb-0 ${
+            className={`timeline-item relative mb-12 last:mb-0 ${
               index % 2 === 0 
                 ? 'md:ml-0 md:mr-auto md:pr-[calc(50%+3rem)]' 
                 : 'md:ml-auto md:mr-0 md:pl-[calc(50%+3rem)]'
@@ -130,13 +106,8 @@ const WorkExperience = () => {
 
             {/* Content Card */}
             <div 
-              className={`ml-20 md:ml-0 glass rounded-3xl p-8 transition-all duration-700 hover:scale-[1.02] ${
-                // First card: vanish when activeIndex > 0
-                index === 0 && activeIndex > 0 
-                  ? 'opacity-0 -translate-y-20 pointer-events-none' 
-                  : index <= activeIndex 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-50 translate-y-8'
+              className={`ml-20 md:ml-0 glass rounded-3xl p-8 group hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-400/20 transition-all duration-300 cursor-pointer ${
+                index === 0 ? 'relative z-10' : 'relative z-0'
               }`}
             >
               {/* Header */}
