@@ -160,36 +160,36 @@ const SayHello = () => {
           onClick={() => setIsToolsOpen(false)}
         >
           <div 
-            className="glass rounded-2xl p-6 max-w-xl w-full animate-scale-in"
+            className="glass rounded-2xl p-6 max-w-4xl w-full animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-2xl font-light serif-heading text-white">My Favorite Tools</h2>
-                <p className="text-xs text-text-secondary mt-1">The stack that powers my work</p>
+                <h2 className="text-xl font-light serif-heading text-white">My Favorite Tools</h2>
+                <p className="text-xs text-text-secondary mt-0.5">The stack that powers my work</p>
               </div>
               <button
                 onClick={() => setIsToolsOpen(false)}
-                className="w-9 h-9 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center"
+                className="w-8 h-8 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center flex-shrink-0"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-5 gap-3">
               {tools.map((tool, index) => (
                 <a
                   key={index}
                   href={tool.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-light rounded-xl p-4 hover:bg-surface transition-all group text-center"
+                  className="glass-light rounded-xl p-3 hover:bg-surface transition-all group text-center"
                 >
-                  <div className={`w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
+                  <div className={`w-10 h-10 mx-auto mb-1.5 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center text-xl group-hover:scale-110 transition-transform`}>
                     {tool.icon}
                   </div>
-                  <p className="text-sm font-semibold text-white mb-1">{tool.name}</p>
-                  <ExternalLink size={10} className="mx-auto text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <p className="text-xs font-semibold text-white">{tool.name}</p>
+                  <ExternalLink size={8} className="mx-auto text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" />
                 </a>
               ))}
             </div>
@@ -204,65 +204,68 @@ const SayHello = () => {
           onClick={() => setIsGuestbookOpen(false)}
         >
           <div 
-            className="glass rounded-2xl p-6 max-w-xl w-full animate-scale-in"
+            className="glass rounded-2xl p-6 max-w-4xl w-full animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-2xl font-light serif-heading text-white">Guestbook</h2>
-                <p className="text-xs text-text-secondary mt-1">Leave your mark!</p>
+                <h2 className="text-xl font-light serif-heading text-white">Guestbook</h2>
+                <p className="text-xs text-text-secondary mt-0.5">Leave your mark!</p>
               </div>
               <button
                 onClick={() => setIsGuestbookOpen(false)}
-                className="w-9 h-9 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center"
+                className="w-8 h-8 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center flex-shrink-0"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
-            {/* Guestbook Form */}
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs text-text-secondary mb-1.5 block">Your Name</label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="w-full px-3 py-2.5 glass-light rounded-lg border border-text-tertiary/20 focus:border-primary/50 outline-none transition-colors text-sm text-white placeholder:text-text-tertiary"
-                />
+            {/* Two Column Layout */}
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Left - Form */}
+              <div className="space-y-3">
+                <div>
+                  <label className="text-xs text-text-secondary mb-1 block">Your Name</label>
+                  <input
+                    type="text"
+                    placeholder="John Doe"
+                    className="w-full px-3 py-2 glass-light rounded-lg border border-text-tertiary/20 focus:border-primary/50 outline-none transition-colors text-sm text-white placeholder:text-text-tertiary"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs text-text-secondary mb-1 block">Message</label>
+                  <textarea
+                    placeholder="Leave a nice message..."
+                    rows={3}
+                    className="w-full px-3 py-2 glass-light rounded-lg border border-text-tertiary/20 focus:border-primary/50 outline-none transition-colors text-sm text-white placeholder:text-text-tertiary resize-none"
+                  />
+                </div>
+
+                <button className="w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm rounded-lg font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all">
+                  Sign Guestbook
+                </button>
               </div>
 
+              {/* Right - Recent Messages */}
               <div>
-                <label className="text-xs text-text-secondary mb-1.5 block">Message</label>
-                <textarea
-                  placeholder="Leave a nice message..."
-                  rows={3}
-                  className="w-full px-3 py-2.5 glass-light rounded-lg border border-text-tertiary/20 focus:border-primary/50 outline-none transition-colors text-sm text-white placeholder:text-text-tertiary resize-none"
-                />
-              </div>
-
-              <button className="w-full px-5 py-2.5 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm rounded-lg font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all">
-                Sign Guestbook
-              </button>
-            </div>
-
-            {/* Recent Messages */}
-            <div className="mt-6">
-              <h3 className="text-xs font-semibold text-text-secondary mb-3">Recent Visitors</h3>
-              <div className="space-y-2.5 max-h-48 overflow-y-auto">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="glass-light rounded-lg p-3">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center text-white text-xs font-bold">
-                        {String.fromCharCode(65 + i)}
+                <h3 className="text-xs font-semibold text-text-secondary mb-2.5">Recent Visitors</h3>
+                <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="glass-light rounded-lg p-2.5">
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                          {String.fromCharCode(65 + i)}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold text-white truncate">Anonymous Visitor</p>
+                          <p className="text-xs text-text-tertiary">2 days ago</p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <p className="text-xs font-semibold text-white">Anonymous Visitor</p>
-                        <p className="text-xs text-text-tertiary">2 days ago</p>
-                      </div>
+                      <p className="text-xs text-text-secondary line-clamp-2">Great portfolio! Love the design 💖</p>
                     </div>
-                    <p className="text-xs text-text-secondary">Great portfolio! Love the design 💖</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
