@@ -95,7 +95,7 @@
 
   /* Nav pill style */
   .nav-pill {
-    @apply px-5 py-2.5 rounded-full transition-all duration-300
+    @apply px-4 py-2 rounded-full transition-all duration-300
            text-text-secondary hover:text-text-primary hover:bg-surface-lighter;
   }
 
@@ -116,6 +116,13 @@
     font-style: italic;
     font-weight: 400;
   }
+
+  /* Section container */
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 }
 
 /* Animations */
@@ -127,6 +134,97 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
+}
+
+/* Marquee animations */
+@keyframes marquee-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
+
+.animate-marquee-left {
+  animation: marquee-left 35s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee-right 60s linear infinite;
+}
+
+/* Text glow animation */
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.3),
+                 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(236, 72, 153, 0.6),
+                 0 0 30px rgba(168, 85, 247, 0.4),
+                 0 0 40px rgba(96, 165, 250, 0.3);
+  }
+}
+
+.animate-text-glow {
+  animation: text-glow 3s ease-in-out infinite;
+}
+
+/* Auto-scroll animation for testimonials */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes scroll-testimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.animate-scroll-testimonials {
+  animation: scroll-testimonials 60s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-testimonials.paused {
+  animation-play-state: paused;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
 }
 
 /* Modal overlay */

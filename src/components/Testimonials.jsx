@@ -124,18 +124,18 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 px-6 overflow-hidden relative bg-gradient-to-b from-background via-surface-dark/30 to-background">
+    <section className="py-16 px-6 overflow-hidden relative bg-gradient-to-b from-background via-surface-dark/30 to-background">
       {/* Section Header */}
-      <div className="max-w-[1400px] mx-auto mb-12">
+      <div className="max-w-[1200px] mx-auto mb-10">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-4">
-            <Quote size={16} className="text-pink-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full mb-3">
+            <Quote size={14} className="text-pink-400" />
             <span className="text-xs uppercase tracking-wider text-text-tertiary">Testimonials</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-light serif-heading mb-4">
+          <h2 className="text-3xl md:text-4xl font-light serif-heading mb-3">
             What <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-primary">People Say</span>
           </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
+          <p className="text-sm text-text-secondary max-w-2xl mx-auto">
             Real feedback from amazing clients I've had the pleasure to work with
           </p>
         </div>
@@ -148,78 +148,69 @@ const Testimonials = () => {
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Gradient Overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
         {/* Scrolling Track */}
         <div className="overflow-hidden w-full">
           <div 
-            className={`flex gap-4 ${!isPaused ? 'animate-scroll-testimonials' : 'paused'}`}
+            className="flex gap-3"
+            style={{
+              animation: isPaused ? 'none' : 'scroll-testimonials 80s linear infinite',
+            }}
           >
             {allTestimonials.map((testimonial, index) => (
               <div
                 key={`${testimonial.id}-${index}`}
-                className="flex-shrink-0 w-[350px] glass rounded-2xl p-6 hover:scale-105 transition-transform duration-300 group cursor-pointer relative"
+                className="flex-shrink-0 w-[280px] glass rounded-xl p-5 hover:scale-105 transition-transform duration-300 group cursor-pointer relative"
               >
                 {/* Quote Icon */}
-                <div className="mb-4">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center`}>
-                    <Quote size={18} className="text-white" />
+                <div className="mb-3">
+                  <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center`}>
+                    <Quote size={14} className="text-white" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold text-white mb-3 serif-heading leading-tight">
+                <h3 className="text-base font-semibold text-white mb-2.5 serif-heading leading-tight line-clamp-2">
                   {testimonial.title}
                 </h3>
 
                 {/* Content */}
-                <p className="text-xs text-text-secondary leading-relaxed mb-4">
+                <p className="text-xs text-text-secondary leading-relaxed mb-3 line-clamp-4">
                   {testimonial.content}
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-3 pt-3 border-t border-text-tertiary/10">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center font-bold text-white text-xs`}>
+                <div className="flex items-center gap-2.5 pt-2.5 border-t border-text-tertiary/10">
+                  <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center font-bold text-white text-xs flex-shrink-0`}>
                     {testimonial.avatar}
                   </div>
-                  <div>
-                    <div className="font-semibold text-white text-sm">{testimonial.author}</div>
-                    <div className="text-xs text-text-tertiary">{testimonial.role}</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-white text-xs truncate">{testimonial.author}</div>
+                    <div className="text-xs text-text-tertiary truncate">{testimonial.role}</div>
                   </div>
                 </div>
 
                 {/* Hover Glow */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${testimonial.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
+                <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${testimonial.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Inline keyframe animation */}
-        <style>{`
-          @keyframes scrollTestimonials {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `}</style>
       </div>
 
       {/* Pause Indicator */}
-      <div className="text-center mt-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-xs text-text-tertiary">
+      <div className="text-center mt-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs text-text-tertiary">
           {isPaused ? (
             <>
-              <div className="w-2 h-2 rounded-full bg-pink-400"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
               <span>Paused - Hover to read</span>
             </>
           ) : (
             <>
-              <div className="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></div>
               <span>Auto-scrolling - Hover to pause</span>
             </>
           )}
