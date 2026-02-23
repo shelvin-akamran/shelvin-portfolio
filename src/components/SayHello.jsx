@@ -44,7 +44,7 @@ const SayHello = () => {
     title: "Tell Him",
     artist: "Lauryn Hill",
     album: "The Miseducation of Lauryn Hill",
-    imageUrl: "https://i.scdn.co/image/ab67616d0000b273c2a3b0a1c1c0d0e0f0f0f0f0", // Placeholder
+    imageUrl: "https://genius.com/Lauryn-hill-tell-him-lyrics", // Placeholder
     spotifyUrl: "https://open.spotify.com/track/..."
   };
 
