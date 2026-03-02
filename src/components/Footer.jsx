@@ -1,6 +1,13 @@
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="border-t border-text-tertiary/10 bg-background">
       {/* Main Footer Content */}
@@ -9,7 +16,7 @@ const Footer = () => {
           {/* Column 1 - About */}
           <div className="md:col-span-1">
             {/* Logo */}
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={() => scrollToSection('hero')}>
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-400 via-purple-400 to-primary flex items-center justify-center">
                 <span className="text-xl font-bold text-white">SA</span>
               </div>
@@ -34,24 +41,24 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5">
               <li>
-                <a href="#hero" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('hero')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Home
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#work-experience" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('work-experience')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   About
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#tech-stack" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('tech-stack')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Projects
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#testimonials" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('testimonials')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Blog
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -63,24 +70,24 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5">
               <li>
-                <a href="#say-hello" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('say-hello')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Guest Book
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#collaboration" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('collaboration')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Bucket List
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#say-hello" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('say-hello')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Uses
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#testimonials" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('testimonials')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Attribution
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -92,27 +99,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5">
               <li>
-                <a href="#say-hello" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('cta')} className="text-sm text-text-secondary hover:text-white transition-colors text-left">
                   Book a call
-                </a>
+                </button>
               </li>
               <li>
-                <a href="https://linkedin.com/in/shelvinakamuran" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <a href="https://linkedin.com/in/shelvinakamuran" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-white transition-colors inline-block">
                   Links
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors inline-block">
                   RSS
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors inline-block">
                   Privacy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors">
+                <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors inline-block">
                   Terms
                 </a>
               </li>

@@ -1,28 +1,25 @@
-import { Outlet } from "react-router-dom"
-import Navigation from "./components/Navigation.jsx"
-import Hero from "./components/HeroSection.jsx"
-import WorkExperience from "./components/WorkExperience"
-import TechStack from "./components/TechStack"
-import Testimonials from "./components/Testimonials.jsx"
-import SayHello from "./components/SayHello.jsx"
-import Footer from "./components/Footer.jsx"
-import CTASection from "./components/CTASection.jsx"
+import Navigation from './components/Navigation';
+import Hero from './components/HeroSection';
+import WorkExperience from './components/WorkExperience';
+import TechStack from './components/TechStack';
+import Testimonials from './components/Testimonials';
+import SayHello from './components/SayHello';
+import CTASection from './components/CTASection';
+import Footer from './components/Footer';
 
-const MainLayout = () => {
+function App() {
   return (
-    <>
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
-      <Outlet />
-      <Hero/>
-      <WorkExperience/>
-      <TechStack/>
-      <Testimonials/>
-      <SayHello/>
-      <CTASection/>
-      <Footer/>
-
-    </>
-  )
+      <Hero />
+      <WorkExperience />
+      <TechStack />
+      <Testimonials />
+      <SayHello />
+      <CTASection />
+      <Footer />
+    </div>
+  );
 }
 
-export default MainLayout
+export default App;
