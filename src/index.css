@@ -206,6 +206,15 @@
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .animate-scroll {
   animation: scroll 40s linear infinite;
 }
@@ -225,6 +234,10 @@
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }
 
 /* Modal overlay */

@@ -44,12 +44,12 @@ const SayHello = () => {
     title: "Tell Him",
     artist: "Lauryn Hill",
     album: "The Miseducation of Lauryn Hill",
-    imageUrl: "https://i.pinimg.com/1200x/cd/4d/49/cd4d49e11ce02720486d1eaba4cbc056.jpg", // Placeholder
+    imageUrl: "https://i.scdn.co/image/ab67616d0000b273c2a3b0a1c1c0d0e0f0f0f0f0", // Placeholder
     spotifyUrl: "https://open.spotify.com/track/..."
   };
 
   return (
-    <section className="py-16 px-6 min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-background via-surface-dark/20 to-background">
+    <section id="say-hello" className="py-16 px-6 min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-background via-surface-dark/20 to-background">
       {/* Section Header */}
       <div className="max-w-[1200px] mx-auto w-full">
         <div className="text-center mb-12">
@@ -67,15 +67,15 @@ const SayHello = () => {
           {/* Card 1 - Uses (Tools) */}
           <div 
             onClick={() => setIsToolsOpen(true)}
-            className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+            className="glass rounded-2xl p-5 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden h-[280px] flex flex-col"
           >
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1">
               {/* Tool Icons Preview */}
-              <div className="flex gap-2 mb-4">
+              <div className="flex gap-2 mb-3">
                 {tools.slice(0, 5).map((tool, i) => (
                   <div
                     key={i}
-                    className={`w-11 h-11 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-xl transform group-hover:scale-110 transition-transform`}
+                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-lg transform group-hover:scale-110 transition-transform`}
                     style={{ transitionDelay: `${i * 50}ms` }}
                   >
                     {tool.icon}
@@ -83,8 +83,8 @@ const SayHello = () => {
                 ))}
               </div>
 
-              <p className="text-xs uppercase tracking-wider text-text-tertiary mb-1.5">USES</p>
-              <h3 className="text-base font-semibold text-white">Check out my favorite tools</h3>
+              <p className="text-xs uppercase tracking-wider text-text-tertiary mb-1">USES</p>
+              <h3 className="text-sm font-semibold text-white">Check out my favorite tools</h3>
             </div>
 
             {/* Hover Glow */}
@@ -94,17 +94,21 @@ const SayHello = () => {
           {/* Card 2 - Guestbook */}
           <div 
             onClick={() => setIsGuestbookOpen(true)}
-            className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+            className="glass rounded-2xl p-5 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden h-[280px] flex flex-col"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: 'cover'
+            }}
           >
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1">
               {/* Guestbook Cards Preview */}
-              <div className="mb-4 relative h-24">
-                <div className="absolute top-0 left-3 w-24 h-18 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl transform rotate-12 group-hover:rotate-6 transition-transform shadow-lg"></div>
-                <div className="absolute top-3 right-3 w-24 h-18 bg-gradient-to-br from-pink-400 to-rose-400 rounded-xl transform -rotate-6 group-hover:-rotate-3 transition-transform shadow-lg"></div>
+              <div className="mb-3 relative h-20">
+                <div className="absolute top-0 left-2 w-20 h-14 bg-gradient-to-br from-blue-400 to-purple-400 rounded-lg transform rotate-12 group-hover:rotate-6 transition-transform shadow-lg"></div>
+                <div className="absolute top-2 right-2 w-20 h-14 bg-gradient-to-br from-pink-400 to-rose-400 rounded-lg transform -rotate-6 group-hover:-rotate-3 transition-transform shadow-lg"></div>
               </div>
 
-              <p className="text-xs uppercase tracking-wider text-text-tertiary mb-1.5">GUESTBOOK</p>
-              <h3 className="text-base font-semibold text-white">Let me know you were here</h3>
+              <p className="text-xs uppercase tracking-wider text-text-tertiary mb-1">GUESTBOOK</p>
+              <h3 className="text-sm font-semibold text-white">Let me know you were here</h3>
             </div>
 
             {/* Hover Glow */}
@@ -116,33 +120,43 @@ const SayHello = () => {
             href={lastPlayed.spotifyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+            className="glass rounded-2xl p-5 hover:scale-105 transition-all duration-300 cursor-pointer group relative overflow-hidden h-[280px] flex flex-col"
           >
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 flex flex-col">
               {/* Spotify Icon */}
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center">
-                  <Music size={14} className="text-white" />
+                <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                  <Music size={12} className="text-white" />
                 </div>
                 <span className="text-xs font-semibold text-green-400">Last Played</span>
               </div>
 
               {/* Album Art & Info */}
-              <div className="mb-3">
-                <div className="w-full aspect-square rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 mb-3 group-hover:scale-105 transition-transform overflow-hidden">
-                  {/* Replace with actual Spotify album art */}
-                  <div className="w-full h-full flex items-center justify-center text-3xl">
+              <div className="flex-1 flex flex-col">
+                <div className="w-full aspect-square rounded-lg bg-gradient-to-br from-purple-400 to-pink-400 mb-3 group-hover:scale-105 transition-transform overflow-hidden relative">
+                  {/* Album Image - Replace with actual Spotify image */}
+                  <img 
+                    src="https://en.wikipedia.org/wiki/The_Miseducation_of_Lauryn_Hill" 
+                    alt={lastPlayed.album}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to gradient with music emoji
+                      e.target.style.display = 'none';
+                      e.target.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full hidden items-center justify-center text-4xl bg-gradient-to-br from-purple-400 to-pink-400">
                     🎵
                   </div>
                 </div>
-                <p className="text-sm font-semibold text-white mb-1 line-clamp-1">
-                  Last Played <span className="text-green-400">{lastPlayed.title}</span>
+                <p className="text-xs font-semibold text-white mb-0.5 line-clamp-1">
+                  <span className="text-green-400">{lastPlayed.title}</span>
                 </p>
                 <p className="text-xs text-text-secondary line-clamp-1">
                   by {lastPlayed.artist}
                 </p>
                 <p className="text-xs text-text-tertiary line-clamp-1">
-                  from {lastPlayed.album}
+                  {lastPlayed.album}
                 </p>
               </div>
             </div>
