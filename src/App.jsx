@@ -6,6 +6,7 @@ import TechStack from "./components/TechStack"
 import Testimonials from "./components/Testimonials.jsx"
 import SayHello from "./components/SayHello.jsx"
 import Footer from "./components/Footer.jsx"
+import CTASection from "./components/CTASection.jsx"
 
 const MainLayout = () => {
   return (
@@ -17,6 +18,7 @@ const MainLayout = () => {
       <TechStack/>
       <Testimonials/>
       <SayHello/>
+      <CTASection/>
       <Footer/>
 
     </>
