@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronDown, X, Calendar, Mail, MessageSquare, Home, User, Briefcase, BookOpen, MessageCircle, List, Phone, Laptop, Award, Link as LinkIcon, Github, Linkedin, Twitter, FileText, Shield, Scale, Copy, Check } from 'lucide-react';
 
 const Navigation = () => {
@@ -54,16 +55,16 @@ const Navigation = () => {
   ];
 
   const menuPages = [
-    { icon: Home, label: 'Home', href: '#home' },
-    { icon: User, label: 'About', href: '#about' },
-    { icon: Briefcase, label: 'Projects', href: '#projects' },
-    { icon: BookOpen, label: 'Blog', href: '#blog' },
-    { icon: MessageCircle, label: 'Guestbook', href: '#guestbook' },
-    { icon: List, label: 'Bucket List', href: '#bucket-list' },
-    { icon: Phone, label: 'Book a call', href: '#book-call' },
-    { icon: Laptop, label: 'Uses', href: '#uses' },
-    { icon: Award, label: 'Attribution', href: '#attribution' },
-    { icon: LinkIcon, label: 'Links', href: '#links' },
+    { icon: Home, label: 'Home', href: '/', isRoute: true },
+    { icon: User, label: 'About', href: '/about-page', isRoute: true },
+    { icon: Briefcase, label: 'Projects', href: '#projects', isRoute: false },
+    { icon: BookOpen, label: 'Blog', href: '#blog', isRoute: false },
+    { icon: MessageCircle, label: 'Guestbook', href: '#guestbook', isRoute: false },
+    { icon: List, label: 'Bucket List', href: '#bucket-list', isRoute: false },
+    { icon: Phone, label: 'Book a call', href: '#book-call', isRoute: false },
+    { icon: Laptop, label: 'Uses', href: '#uses', isRoute: false },
+    { icon: Award, label: 'Attribution', href: '#attribution', isRoute: false },
+    { icon: LinkIcon, label: 'Links', href: '#links', isRoute: false },
   ];
 
   const menuConnect = [
@@ -101,8 +102,8 @@ const Navigation = () => {
 
           {/* Center Navigation */}
           <div className="glass rounded-full px-2 py-1.5 flex items-center gap-1">
-            <a href="#home" className="nav-pill active text-sm">Home</a>
-            <a href="#about" className="nav-pill text-sm">About</a>
+            <Link to="/" className="nav-pill active text-sm">Home</Link>
+            <Link to="/about-page" className="nav-pill text-sm">About</Link>
             <a href="#work" className="nav-pill text-sm">Work</a>
             <a href="#blog" className="nav-pill text-sm">Blog</a>
             
@@ -317,15 +318,27 @@ const Navigation = () => {
               <h3 className="text-xs text-text-tertiary uppercase tracking-wider mb-3 px-2">Pages</h3>
               <div className="space-y-1">
                 {menuPages.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
-                    <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
-                  </a>
+                  item.isRoute ? (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
+                      <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
+                      <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
+                    </a>
+                  )
                 ))}
               </div>
             </div>

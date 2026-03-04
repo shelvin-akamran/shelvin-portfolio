@@ -1,22 +1,25 @@
+import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import Hero from './components/HeroSection';
-import WorkExperience from './components/WorkExperience';
-import TechStack from './components/TechStack';
-import Testimonials from './components/Testimonials';
+import Footer from './components/Footer';
 import SayHello from './components/SayHello';
 import CTASection from './components/CTASection';
-import Footer from './components/Footer';
+
+// Pages
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
     <div className="min-h-screen bg-background text-white">
       <Navigation />
-      <Hero />
-      <WorkExperience />
-      <TechStack />
-      <Testimonials />
-      <SayHello />
-      <CTASection />
+      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about-page" element={<AboutPage />} />
+      </Routes>
+
+      <SayHello/>
+      <CTASection/>
       <Footer />
     </div>
   );
