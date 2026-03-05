@@ -8,6 +8,7 @@ import CTASection from './components/CTASection';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import WorkPage from './pages/WorkPage';
+import BlogPage from './pages/BlogPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about-page" element={<AboutPage />} />
         <Route path="/work" element={<WorkPage />} />
+        <Route path="/blog" element={<BlogPage />} />
       </Routes>
 
       <SayHello/>
