@@ -43,13 +43,13 @@ const FirstYear = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-yellow-400/20 via-orange-400/20 to-red-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🎓</div>
-                  <p className="text-text-tertiary">First Year Lessons</p>
-                </div>
-              </div>
+              <img
+                src="https://i.pinimg.com/736x/45/13/73/4513733492d7e9f555bcc626a81d53f9.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

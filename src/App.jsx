@@ -10,6 +10,10 @@ import Web3Apps from './pages/blog/Web3Apps';
 import NextJSPerf from './pages/blog/NextJSPerf';
 import Burnout from './pages/blog/Burnout';
 import ReactPatterns from './pages/blog/ReactPatterns';
+import TypeScriptMistakes from './pages/blog/TypescriptMistakes';
+import FirstYear from './pages/blog/FirstYear';
+import StateManagement from './pages/blog/StateManagement';
+import Terminal from './pages/blog/Terminal';
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -32,6 +36,9 @@ function App() {
         <Route path="/blog/developer-burnout" element={<Burnout />} />
         <Route path="/blog/react-patterns-2026" element={<ReactPatterns />} />
         <Route path="/blog/terminal-workflow" element={<Terminal />} />
+        <Route path="/blog/typescript-mistakes" element={<TypeScriptMistakes />} />
+        <Route path="/blog/first-year-developer" element={<FirstYear />} />
+        <Route path="/blog/state-management-2026" element={<StateManagement />} />
       </Routes>
   
       <SayHello/>

@@ -42,14 +42,14 @@ const NextJSPerf = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-blue-400/20 via-cyan-400/20 to-teal-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">⚡</div>
-                  <p className="text-text-tertiary">Next.js Performance</p>
-                </div>
-              </div>
+           <div className="rounded-2xl overflow-hidden mb-12">
+              <img
+                src="https://i.pinimg.com/1200x/82/9c/97/829c97264446ed3fd4e5147fc3d2656a.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

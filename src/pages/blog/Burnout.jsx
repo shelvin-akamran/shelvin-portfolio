@@ -45,13 +45,13 @@ const Burnout = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-red-400/20 via-orange-400/20 to-yellow-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">😔</div>
-                  <p className="text-text-tertiary">Mental Health Matters</p>
-                </div>
-              </div>
+              <img
+                src="https://i.pinimg.com/1200x/bb/a1/b9/bba1b9fe27c61db6d88940c09fa69571.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

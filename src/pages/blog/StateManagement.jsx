@@ -44,13 +44,13 @@ const StateManagement = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-purple-400/20 via-pink-400/20 to-red-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">⚡</div>
-                  <p className="text-text-tertiary">State Management</p>
-                </div>
-              </div>
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5612AQHjB2qQCOmWnw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1695382717430?e=2147483647&v=beta&t=38LGsy24tmUbRjBlZshTQ8ypbL-lwPI4C4QJe3SR3t8"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

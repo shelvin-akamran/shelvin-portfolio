@@ -56,14 +56,12 @@ const BlogPost1 = () => {
               </div>
             </div>
 
-            {/* Featured Image */}
-            <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-pink-400/20 via-purple-400/20 to-blue-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🤖</div>
-                  <p className="text-text-tertiary">AI Development Journey</p>
-                </div>
-              </div>
+           <div className="rounded-2xl overflow-hidden mb-12">
+              <img
+                src="https://i.pinimg.com/736x/4a/14/0b/4a140b5c2d311f593b2a86933d2adedf.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
 
             {/* Content */}

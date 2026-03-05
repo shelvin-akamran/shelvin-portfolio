@@ -44,14 +44,14 @@ const ReactPatterns = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-cyan-400/20 via-blue-400/20 to-indigo-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">⚛️</div>
-                  <p className="text-text-tertiary">React Patterns</p>
-                </div>
-              </div>
+             <div className="rounded-2xl overflow-hidden mb-12">
+              <img
+                src="https://i.pinimg.com/736x/2d/38/8e/2d388e54598d97c8c0c3b1d4c7af0aa7.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

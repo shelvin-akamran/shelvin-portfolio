@@ -43,12 +43,11 @@ const Terminal = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-green-400/20 via-teal-400/20 to-cyan-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">💻</div>
-                  <p className="text-text-tertiary">Terminal Setup</p>
-                </div>
-              </div>
+              <img
+                src="https://i.pinimg.com/736x/64/12/ad/6412ad38c1ad685c753f948f5b57317f.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
 
             <div className="prose prose-invert max-w-none">

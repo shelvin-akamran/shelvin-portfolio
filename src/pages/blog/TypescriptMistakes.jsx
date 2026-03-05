@@ -42,14 +42,14 @@ const TypeScriptMistakes = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-blue-400/20 via-indigo-400/20 to-purple-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🔷</div>
-                  <p className="text-text-tertiary">TypeScript Lessons</p>
-                </div>
-              </div>
+           <div className="rounded-2xl overflow-hidden mb-12">
+              <img
+                src="https://i.pinimg.com/736x/aa/14/7a/aa147aa21f1b9b9fde54e83e1c8d496e.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
+
 
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-text-secondary leading-relaxed mb-6">

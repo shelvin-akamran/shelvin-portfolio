@@ -1,7 +1,6 @@
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import SayHello from '../../components/SayHello';
-import CTASection from '../../components/CTASection';
+
 
 const Web3Apps = () => {
   return (
@@ -46,13 +45,12 @@ const Web3Apps = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden mb-12">
-              <div className="w-full aspect-video bg-gradient-to-br from-purple-400/20 via-blue-400/20 to-cyan-400/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">⛓️</div>
-                  <p className="text-text-tertiary">Web3 Development</p>
-                </div>
-              </div>
+          <div className="rounded-2xl overflow-hidden mb-12">
+              <img
+                src="https://i.pinimg.com/1200x/21/ef/1f/21ef1f3251453bae89e8dab288e1c634.jpg"
+                alt="AI Development Journey"
+                className="w-full aspect-video object-cover"
+              />
             </div>
 
             <div className="prose prose-invert max-w-none">
@@ -262,8 +260,6 @@ contract DocumentRegistry {
         </article>
       </div>
 
-      <SayHello />
-      <CTASection />
     </>
   );
 };
