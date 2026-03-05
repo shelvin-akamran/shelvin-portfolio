@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, Search, Rss } from 'lucide-react';
-import SayHello from '../components/SayHello';
-import CTASection from '../components/CTASection';
+import Newsletter from '../../components/Newsletter';
 
 const BlogPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -9,79 +9,128 @@ const BlogPage = () => {
 
   const categories = [
     'All Posts',
-    'Developer-Tools',
-    'Terminal',
-    'Neovim',
-    'Workflow',
-    'Nextjs',
-    'Mdx',
-    'React',
-    'Tutorial',
+    'AI & ML',
+    'Web Development',
     'Career',
+    'Tech Trends',
     'Learning',
-    'Developer-Mindset'
+    'Tools',
+    'React',
+    'Next.js',
+    'Web3',
+    'Personal'
   ];
 
   const posts = [
     {
       id: 1,
-      title: 'Every Tool in My Terminal-First Dev Setup',
-      excerpt: 'Neovim, Wezterm, Tmux, and the rest — what survived two years of daily use and why I picked each one over the obvious alternatives.',
-      image: '/blog/terminal-setup.jpg',
-      date: 'Oct 19, 2025',
-      readTime: '11 min read',
-      category: 'Developer-Tools',
-      tags: ['Terminal', 'Neovim', 'Workflow']
+      slug: 'ai-development-journey',
+      title: 'My Journey into AI Development: From Skeptic to Believer',
+      excerpt: 'How AI tools transformed my development workflow and made me 10x more productive. A year of learning, experimentation, and real results.',
+      image: '/blog/ai-journey.jpg',
+      date: 'January 15, 2026',
+      readTime: '12 min read',
+      category: 'AI & ML',
+      tags: ['AI', 'Development', 'Productivity']
     },
     {
       id: 2,
-      title: 'Build a Markdown Blog with Next.js and MDX from Scratch',
-      excerpt: 'File-based content, zero database, full control. A complete walkthrough of building a statically-generated blog with Next.js, MDX, and gray-matter.',
-      image: '/blog/nextjs-mdx.jpg',
-      date: 'Mar 12, 2025',
-      readTime: '11 min read',
-      category: 'Tutorial',
-      tags: ['Nextjs', 'Mdx', 'React']
+      slug: 'web3-real-world',
+      title: 'Building Real-World Web3 Apps: Lessons from the Trenches',
+      excerpt: 'Blockchain isn\'t just hype. Here\'s what I learned building production Web3 applications with Solidity, ethers.js, and smart contracts.',
+      image: '/blog/web3-apps.jpg',
+      date: 'December 28, 2025',
+      readTime: '15 min read',
+      category: 'Web3',
+      tags: ['Web3', 'Blockchain', 'Solidity']
     },
     {
       id: 3,
-      title: "What I'd Tell Myself Before Learning to Code",
-      excerpt: 'The myths, mistakes, and mindset shifts that separate people who learn to code from people who quit. Hard-won lessons from my first two years.',
-      image: '/blog/learning-code.jpg',
-      date: 'Dec 5, 2024',
-      readTime: '11 min read',
-      category: 'Career',
-      tags: ['Learning', 'Developer-Mindset']
+      slug: 'nextjs-performance',
+      title: 'Next.js 15: The Performance Features That Actually Matter',
+      excerpt: 'Server components, streaming, and partial pre-rendering. A deep dive into what makes Next.js 15 a game-changer for modern web apps.',
+      image: '/blog/nextjs-15.jpg',
+      date: 'December 10, 2025',
+      readTime: '10 min read',
+      category: 'Next.js',
+      tags: ['Next.js', 'Performance', 'React']
     },
     {
       id: 4,
-      title: 'Mastering React Hooks: A Complete Guide',
-      excerpt: 'Deep dive into React Hooks - from useState to custom hooks. Learn the patterns that make your components cleaner and more reusable.',
-      image: '/blog/react-hooks.jpg',
-      date: 'Nov 8, 2024',
-      readTime: '15 min read',
-      category: 'Tutorial',
-      tags: ['React', 'Tutorial']
+      slug: 'developer-burnout',
+      title: 'I Almost Quit Coding: My Battle with Developer Burnout',
+      excerpt: 'The honest story of hitting rock bottom, what caused it, and the practical steps I took to fall in love with coding again.',
+      image: '/blog/burnout.jpg',
+      date: 'November 22, 2025',
+      readTime: '8 min read',
+      category: 'Career',
+      tags: ['Mental Health', 'Career', 'Personal']
     },
     {
       id: 5,
-      title: 'My Neovim Config Explained',
-      excerpt: 'Breaking down my Neovim configuration - plugins, keymaps, and LSP setup. Everything you need to get started with modern Neovim.',
-      image: '/blog/neovim-config.jpg',
-      date: 'Oct 3, 2024',
-      readTime: '12 min read',
-      category: 'Developer-Tools',
-      tags: ['Neovim', 'Terminal', 'Workflow']
+      slug: 'react-patterns-2026',
+      title: 'React Patterns I Wish I Knew Earlier',
+      excerpt: 'Custom hooks, compound components, and render props explained with real examples from production apps I\'ve built.',
+      image: '/blog/react-patterns.jpg',
+      date: 'November 5, 2025',
+      readTime: '14 min read',
+      category: 'React',
+      tags: ['React', 'Patterns', 'Best Practices']
     },
     {
       id: 6,
-      title: 'Building Scalable Next.js Applications',
-      excerpt: 'Best practices for structuring large Next.js projects. Learn about folder organization, data fetching strategies, and performance optimization.',
-      image: '/blog/nextjs-scalable.jpg',
-      date: 'Sep 15, 2024',
+      slug: 'terminal-workflow',
+      title: 'My Terminal-First Development Setup in 2026',
+      excerpt: 'Why I ditched VS Code for Neovim, tmux, and a terminal-first workflow. Two years later, I\'m never going back.',
+      image: '/blog/terminal.jpg',
+      date: 'October 18, 2025',
+      readTime: '11 min read',
+      category: 'Tools',
+      tags: ['Terminal', 'Neovim', 'Productivity']
+    },
+    {
+      id: 7,
+      slug: 'typescript-mistakes',
+      title: 'TypeScript Mistakes That Cost Me Hours',
+      excerpt: 'The type errors I kept making, why they happened, and how I finally understood TypeScript\'s type system.',
+      image: '/blog/typescript.jpg',
+      date: 'October 3, 2025',
+      readTime: '9 min read',
+      category: 'Web Development',
+      tags: ['TypeScript', 'JavaScript', 'Learning']
+    },
+    {
+      id: 8,
+      slug: 'first-year-developer',
+      title: 'What I Wish I Knew Before My First Dev Job',
+      excerpt: 'Imposter syndrome, code reviews, and learning in public. The truth about your first year as a professional developer.',
+      image: '/blog/first-year.jpg',
+      date: 'September 15, 2025',
+      readTime: '10 min read',
+      category: 'Career',
+      tags: ['Career', 'Learning', 'Advice']
+    },
+    {
+      id: 9,
+      slug: 'state-management-2026',
+      title: 'The State of State Management in 2026',
+      excerpt: 'Redux vs Zustand vs Jotai vs React Context. I tested them all in production. Here\'s what actually works.',
+      image: '/blog/state-management.jpg',
+      date: 'August 28, 2025',
       readTime: '13 min read',
-      category: 'Tutorial',
-      tags: ['Nextjs', 'React']
+      category: 'React',
+      tags: ['State Management', 'React', 'Architecture']
+    },
+    {
+      id: 10,
+      slug: 'building-in-public',
+      title: 'I Built a SaaS in Public: Here\'s What Happened',
+      excerpt: 'From zero to 1000 users in 6 months. The good, the bad, and the lessons learned from building and marketing in public.',
+      image: '/blog/saas-public.jpg',
+      date: 'August 10, 2025',
+      readTime: '16 min read',
+      category: 'Personal',
+      tags: ['Startup', 'Marketing', 'Learning']
     }
   ];
 
@@ -106,6 +155,9 @@ const BlogPage = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6">
               Handpicked <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-primary font-serif">Insights</span>
             </h1>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              Real experiences, hard lessons, and honest takes on modern development
+            </p>
           </div>
         </section>
 
@@ -158,9 +210,10 @@ const BlogPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post) => (
-                <article
+                <Link
                   key={post.id}
-                  className="glass rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer group"
+                  to={`/blog/${post.slug}`}
+                  className="glass rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer group block"
                 >
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden">
@@ -204,7 +257,7 @@ const BlogPage = () => {
                       </div>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
 
@@ -220,28 +273,7 @@ const BlogPage = () => {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16 px-6 bg-surface-dark/30">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="glass rounded-3xl p-12">
-              <h2 className="text-3xl font-light serif-heading mb-4">
-                Never miss an update
-              </h2>
-              <p className="text-text-secondary mb-6">
-                Subscribe to get my latest posts delivered straight to your inbox.
-              </p>
-              <div className="flex gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 px-4 py-3 glass rounded-full border border-text-tertiary/20 focus:border-primary/50 outline-none transition-colors text-white placeholder:text-text-tertiary"
-                />
-                <button className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all whitespace-nowrap">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Newsletter />
       </div>
 
     </>
