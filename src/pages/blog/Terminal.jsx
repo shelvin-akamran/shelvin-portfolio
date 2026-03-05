@@ -1,7 +1,5 @@
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import SayHello from '../../components/SayHello';
-import CTASection from '../../components/CTASection';
 
 const Terminal = () => {
   return (
