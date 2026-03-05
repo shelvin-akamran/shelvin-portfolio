@@ -105,7 +105,7 @@ const Navigation = () => {
             <Link to="/" className="nav-pill active text-sm">Home</Link>
             <Link to="/about-page" className="nav-pill text-sm">About</Link>
             <Link to="/work" className="nav-pill text-sm">Work</Link>
-            <a href="#blog" className="nav-pill text-sm">Blog</a>
+            <Link to="/blog" className="nav-pill text-sm">Blog</Link>
             
             {/* More Dropdown */}
             <div 
