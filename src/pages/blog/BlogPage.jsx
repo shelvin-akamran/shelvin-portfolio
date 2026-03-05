@@ -121,17 +121,6 @@ const BlogPage = () => {
       category: 'React',
       tags: ['State Management', 'React', 'Architecture']
     },
-    {
-      id: 10,
-      slug: 'building-in-public',
-      title: 'I Built a SaaS in Public: Here\'s What Happened',
-      excerpt: 'From zero to 1000 users in 6 months. The good, the bad, and the lessons learned from building and marketing in public.',
-      image: '/blog/saas-public.jpg',
-      date: 'August 10, 2025',
-      readTime: '16 min read',
-      category: 'Personal',
-      tags: ['Startup', 'Marketing', 'Learning']
-    }
   ];
 
   const filteredPosts = posts.filter(post => {

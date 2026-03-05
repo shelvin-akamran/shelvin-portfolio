@@ -8,6 +8,8 @@ import CTASection from './components/CTASection';
 import AIJourney from './pages/blog/AIJourney';
 import Web3Apps from './pages/blog/Web3Apps';
 import NextJSPerf from './pages/blog/NextJSPerf';
+import Burnout from './pages/blog/Burnout';
+import ReactPatterns from './pages/blog/ReactPatterns';
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -27,6 +29,9 @@ function App() {
         <Route path="/blog/ai-development-journey" element={<AIJourney />} />
         <Route path="/blog/web3-real-world" element={<Web3Apps />} />
         <Route path="/blog/nextjs-performance" element={<NextJSPerf />} />
+        <Route path="/blog/developer-burnout" element={<Burnout />} />
+        <Route path="/blog/react-patterns-2026" element={<ReactPatterns />} />
+        <Route path="/blog/terminal-workflow" element={<Terminal />} />
       </Routes>
   
       <SayHello/>
