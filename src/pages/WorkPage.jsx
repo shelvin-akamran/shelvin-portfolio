@@ -237,11 +237,6 @@ const WorkPage = () => {
         </section>
       </div>
 
-      {/* Say Hello Section */}
-      <SayHello />
-
-      {/* CTA Section */}
-      <CTASection />
     </>
   );
 };

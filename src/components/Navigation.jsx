@@ -104,7 +104,7 @@ const Navigation = () => {
           <div className="glass rounded-full px-2 py-1.5 flex items-center gap-1">
             <Link to="/" className="nav-pill active text-sm">Home</Link>
             <Link to="/about-page" className="nav-pill text-sm">About</Link>
-            <a href="#work" className="nav-pill text-sm">Work</a>
+            <Link to="/work" className="nav-pill text-sm">Work</Link>
             <a href="#blog" className="nav-pill text-sm">Blog</a>
             
             {/* More Dropdown */}
