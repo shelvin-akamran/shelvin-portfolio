@@ -107,6 +107,7 @@ const Navigation = () => {
             <Link to="/work" className="nav-pill text-sm">Work</Link>
             <Link to="/blog" className="nav-pill text-sm">Blog</Link>
             
+            
             {/* More Dropdown */}
             <div 
               className="relative"
