@@ -19,7 +19,8 @@ const Navigation = () => {
       icon: MessageCircle, 
       label: 'Guestbook', 
       desc: 'Let me know you were here', 
-      href: '#guestbook',
+      href: '/guestbook',
+      isRoute: true,
       hasImage: true,
       imageUrl: '/guestbook-bg.jpg'
     },
@@ -28,6 +29,7 @@ const Navigation = () => {
       label: 'Bucket List', 
       desc: 'Things to do at least once in my life', 
       href: '#bucket-list',
+      isRoute: false,
       hasImage: true,
       imageUrl: '/bucketlist-bg.jpg'
     },
@@ -36,6 +38,7 @@ const Navigation = () => {
       label: 'Links', 
       desc: 'All my links are here', 
       href: '#links',
+      isRoute: false,
       hasImage: false
     },
     { 
@@ -43,6 +46,7 @@ const Navigation = () => {
       label: 'Uses', 
       desc: 'A peek into my digital...', 
       href: '#uses',
+      isRoute: false,
       hasImage: false
     },
     { 
@@ -50,6 +54,7 @@ const Navigation = () => {
       label: 'Attribution', 
       desc: 'Journey to create this site', 
       href: '#attribution',
+      isRoute: false,
       hasImage: false
     },
   ];
@@ -57,9 +62,9 @@ const Navigation = () => {
   const menuPages = [
     { icon: Home, label: 'Home', href: '/', isRoute: true },
     { icon: User, label: 'About', href: '/about-page', isRoute: true },
-    { icon: Briefcase, label: 'Projects', href: '#projects', isRoute: false },
-    { icon: BookOpen, label: 'Blog', href: '#blog', isRoute: false },
-    { icon: MessageCircle, label: 'Guestbook', href: '#guestbook', isRoute: false },
+    { icon: Briefcase, label: 'Work', href: '/work', isRoute: true },
+    { icon: BookOpen, label: 'Blog', href: '/blog', isRoute: true },
+    { icon: MessageCircle, label: 'Guestbook', href: '/guestbook', isRoute: true },
     { icon: List, label: 'Bucket List', href: '#bucket-list', isRoute: false },
     { icon: Phone, label: 'Book a call', href: '#book-call', isRoute: false },
     { icon: Laptop, label: 'Uses', href: '#uses', isRoute: false },
@@ -83,31 +88,26 @@ const Navigation = () => {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo - LEFT BUTTON */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-surface-lighter transition-all duration-300 group overflow-hidden"
           >
-            {/* Your logo image will go here */}
             <img 
               src="/logo.svg" 
               alt="Shelvin Akamuran" 
               className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform"
             />
-            {/* Fallback if image doesn't load */}
             <div className="hidden text-lg font-bold text-white group-hover:scale-110 transition-transform">
               SA
             </div>
           </button>
 
-          {/* Center Navigation */}
           <div className="glass rounded-full px-2 py-1.5 flex items-center gap-1">
             <Link to="/" className="nav-pill active text-sm">Home</Link>
             <Link to="/about-page" className="nav-pill text-sm">About</Link>
             <Link to="/work" className="nav-pill text-sm">Work</Link>
             <Link to="/blog" className="nav-pill text-sm">Blog</Link>
             
-            {/* More Dropdown */}
             <div 
               className="relative"
               onMouseEnter={() => setIsMoreOpen(true)}
@@ -121,7 +121,6 @@ const Navigation = () => {
                 <ChevronDown size={16} className={`transition-transform duration-300 ${isMoreOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Menu - SIDE BY SIDE LAYOUT */}
               {isMoreOpen && (
                 <>
                   <div 
@@ -130,59 +129,91 @@ const Navigation = () => {
                   />
                   <div className="absolute top-full mt-2 right-0 glass rounded-2xl p-3 min-w-[600px] dropdown-enter z-50">
                     <div className="flex gap-3">
-                      {/* LEFT SIDE - Image Cards */}
                       <div className="flex-1 grid grid-cols-1 gap-2">
                         {moreItems.filter(item => item.hasImage).map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            className="relative h-32 rounded-xl overflow-hidden group cursor-pointer"
-                            onClick={() => setIsMoreOpen(false)}
-                          >
-                            {/* Background Image */}
-                            <div 
-                              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                              style={{ 
-                                backgroundImage: `url(${item.imageUrl})`,
-                                backgroundColor: '#1a1a24'
-                              }}
+                          item.isRoute ? (
+                            <Link
+                              key={item.label}
+                              to={item.href}
+                              className="relative h-32 rounded-xl overflow-hidden group cursor-pointer"
+                              onClick={() => setIsMoreOpen(false)}
                             >
-                              {/* Fallback gradient if no image */}
-                              <div className="w-full h-full bg-gradient-to-br from-surface/90 to-surface-dark/90"></div>
-                            </div>
-                            
-                            {/* Gradient Overlay for text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                            
-                            {/* Content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                              <div className="font-semibold text-white text-sm mb-0.5">{item.label}</div>
-                              <div className="text-xs text-gray-300">{item.desc}</div>
-                            </div>
-                            
-                            {/* Hover Effect */}
-                            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
-                          </a>
+                              <div 
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                style={{ 
+                                  backgroundImage: `url(${item.imageUrl})`,
+                                  backgroundColor: '#1a1a24'
+                                }}
+                              >
+                                <div className="w-full h-full bg-gradient-to-br from-surface/90 to-surface-dark/90"></div>
+                              </div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                                <div className="font-semibold text-white text-sm mb-0.5">{item.label}</div>
+                                <div className="text-xs text-gray-300">{item.desc}</div>
+                              </div>
+                              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+                            </Link>
+                          ) : (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="relative h-32 rounded-xl overflow-hidden group cursor-pointer"
+                              onClick={() => setIsMoreOpen(false)}
+                            >
+                              <div 
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                style={{ 
+                                  backgroundImage: `url(${item.imageUrl})`,
+                                  backgroundColor: '#1a1a24'
+                                }}
+                              >
+                                <div className="w-full h-full bg-gradient-to-br from-surface/90 to-surface-dark/90"></div>
+                              </div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                                <div className="font-semibold text-white text-sm mb-0.5">{item.label}</div>
+                                <div className="text-xs text-gray-300">{item.desc}</div>
+                              </div>
+                              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+                            </a>
+                          )
                         ))}
                       </div>
 
-                      {/* RIGHT SIDE - Regular Items */}
                       <div className="flex-1 space-y-1">
                         {moreItems.filter(item => !item.hasImage).map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-lighter transition-all duration-300 group"
-                            onClick={() => setIsMoreOpen(false)}
-                          >
-                            <div className="w-9 h-9 rounded-lg bg-surface-dark flex items-center justify-center flex-shrink-0 group-hover:bg-surface group-hover:scale-110 transition-all">
-                              <item.icon size={18} className="text-text-secondary group-hover:text-primary" />
-                            </div>
-                            <div>
-                              <div className="font-medium text-white text-sm mb-0.5">{item.label}</div>
-                              <div className="text-xs text-text-secondary">{item.desc}</div>
-                            </div>
-                          </a>
+                          item.isRoute ? (
+                            <Link
+                              key={item.label}
+                              to={item.href}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-lighter transition-all duration-300 group"
+                              onClick={() => setIsMoreOpen(false)}
+                            >
+                              <div className="w-9 h-9 rounded-lg bg-surface-dark flex items-center justify-center flex-shrink-0 group-hover:bg-surface group-hover:scale-110 transition-all">
+                                <item.icon size={18} className="text-text-secondary group-hover:text-primary" />
+                              </div>
+                              <div>
+                                <div className="font-medium text-white text-sm mb-0.5">{item.label}</div>
+                                <div className="text-xs text-text-secondary">{item.desc}</div>
+                              </div>
+                            </Link>
+                          ) : (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-lighter transition-all duration-300 group"
+                              onClick={() => setIsMoreOpen(false)}
+                            >
+                              <div className="w-9 h-9 rounded-lg bg-surface-dark flex items-center justify-center flex-shrink-0 group-hover:bg-surface group-hover:scale-110 transition-all">
+                                <item.icon size={18} className="text-text-secondary group-hover:text-primary" />
+                              </div>
+                              <div>
+                                <div className="font-medium text-white text-sm mb-0.5">{item.label}</div>
+                                <div className="text-xs text-text-secondary">{item.desc}</div>
+                              </div>
+                            </a>
+                          )
                         ))}
                       </div>
                     </div>
@@ -199,7 +230,6 @@ const Navigation = () => {
             </button>
           </div>
 
-          {/* Command Icon - RIGHT BUTTON */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-surface-lighter transition-all duration-300 group"
@@ -214,36 +244,24 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Book a Call Modal */}
       {isBookCallOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay" onClick={() => setIsBookCallOpen(false)}>
           <div className="glass rounded-3xl p-8 max-w-xl w-full menu-enter" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-light serif-heading">Get in touch</h2>
-              <button
-                onClick={() => setIsBookCallOpen(false)}
-                className="w-10 h-10 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center"
-              >
+              <button onClick={() => setIsBookCallOpen(false)} className="w-10 h-10 rounded-full hover:bg-surface-lighter transition-all flex items-center justify-center">
                 <X size={20} />
               </button>
             </div>
-
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <a
-                href="#book-call"
-                className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group"
-              >
+              <a href="#book-call" className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group">
                 <div className="w-12 h-12 rounded-full bg-surface-dark flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Calendar size={24} className="text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-1">Book a Call</h3>
                 <p className="text-sm text-text-secondary">Schedule a 30-min chat</p>
               </a>
-
-              <button
-                onClick={copyEmail}
-                className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group cursor-pointer"
-              >
+              <button onClick={copyEmail} className="glass-light rounded-2xl p-6 hover:bg-surface transition-all duration-300 group cursor-pointer">
                 <div className="w-12 h-12 rounded-full bg-surface-dark flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Mail size={24} className="text-primary" />
                 </div>
@@ -263,7 +281,6 @@ const Navigation = () => {
                 </p>
               </button>
             </div>
-
             <button className="w-full glass-light rounded-2xl p-4 hover:bg-surface transition-all duration-300 flex items-center gap-3 mb-6">
               <MessageSquare size={20} className="text-primary" />
               <div className="flex-1 text-left">
@@ -271,7 +288,6 @@ const Navigation = () => {
               </div>
               <div className="text-xs text-text-tertiary">Tap to open</div>
             </button>
-
             <div className="text-center">
               <p className="text-xs text-text-tertiary uppercase tracking-wider mb-4">Connect on Socials</p>
               <div className="flex items-center justify-center gap-4">
@@ -290,51 +306,31 @@ const Navigation = () => {
         </div>
       )}
 
-      {/* Full Menu Panel - CENTERED WITH FULL BLUR */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay" onClick={() => setIsMenuOpen(false)}>
           <div className="w-full max-w-md glass menu-enter rounded-3xl p-6 max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            {/* Search Bar */}
             <div className="glass-light rounded-2xl px-4 py-3 mb-6 flex items-center gap-3">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-tertiary">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.35-4.35"/>
               </svg>
-              <input
-                type="text"
-                placeholder="Search"
-                className="flex-1 bg-transparent border-none outline-none text-white placeholder-text-tertiary"
-              />
+              <input type="text" placeholder="Search" className="flex-1 bg-transparent border-none outline-none text-white placeholder-text-tertiary" />
               <div className="flex items-center gap-2">
-                <button className="w-7 h-7 rounded-lg glass-light flex items-center justify-center text-xs">
-                  ☀️
-                </button>
+                <button className="w-7 h-7 rounded-lg glass-light flex items-center justify-center text-xs">☀️</button>
                 <kbd className="px-2 py-1 glass-light rounded text-xs text-text-tertiary">ESC</kbd>
               </div>
             </div>
-
-            {/* Pages Section */}
             <div className="mb-8">
               <h3 className="text-xs text-text-tertiary uppercase tracking-wider mb-3 px-2">Pages</h3>
               <div className="space-y-1">
                 {menuPages.map((item) => (
                   item.isRoute ? (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                    <Link key={item.label} to={item.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group" onClick={() => setIsMenuOpen(false)}>
                       <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                       <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
                     </Link>
                   ) : (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                    <a key={item.label} href={item.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group" onClick={() => setIsMenuOpen(false)}>
                       <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                       <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
                     </a>
@@ -342,20 +338,11 @@ const Navigation = () => {
                 ))}
               </div>
             </div>
-
-            {/* Connect Section */}
             <div className="mb-8">
               <h3 className="text-xs text-text-tertiary uppercase tracking-wider mb-3 px-2">Connect</h3>
               <div className="space-y-1">
                 {menuConnect.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
+                  <a key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group" onClick={() => setIsMenuOpen(false)}>
                     <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                     <span className="text-text-secondary group-hover:text-white transition-colors flex-1">{item.label}</span>
                     {item.href.startsWith('http') && (
@@ -369,18 +356,11 @@ const Navigation = () => {
                 ))}
               </div>
             </div>
-
-            {/* Legal Section */}
             <div>
               <h3 className="text-xs text-text-tertiary uppercase tracking-wider mb-3 px-2">Legal</h3>
               <div className="space-y-1">
                 {menuLegal.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
+                  <a key={item.label} href={item.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-lighter transition-all group" onClick={() => setIsMenuOpen(false)}>
                     <item.icon size={18} className="text-text-tertiary group-hover:text-primary transition-colors" />
                     <span className="text-text-secondary group-hover:text-white transition-colors">{item.label}</span>
                   </a>
