@@ -22,6 +22,7 @@ import WorkPage from './pages/WorkPage';
 import BlogPage from './pages/blog/BlogPage';
 import GuestbookPage from './pages/GuestbookPage';
 import BucketListPage from './pages/BucketlistPage';
+import AttributionPage from './pages/AttributionPage';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/guestbook" element={<GuestbookPage />} />
         <Route path="/bucketlist" element={<BucketListPage />} />
+        <Route path="/attribution" element={<AttributionPage/>} />
         <Route path="/blog/ai-development-journey" element={<AIJourney />} />
         <Route path="/blog/web3-real-world" element={<Web3Apps />} />
         <Route path="/blog/nextjs-performance" element={<NextJSPerf />} />
